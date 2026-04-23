@@ -1,7 +1,6 @@
 import { Box } from "lucide-react";
 import Button from "./ui/Button";
 import { useOutletContext } from "react-router";
-import puter from "@heyputer/puter.js";
 
 export const Navbar = () => {
 
