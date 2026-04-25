@@ -20,7 +20,26 @@ export default function Home() {
   const isCreatingProjectRef = useRef(false);
 
   const handleUploadComplete = async (base64Image: string) => {
+    try {
 
+      if (isCreatingProjectRef.current) return false;
+      isCreatingProjectRef.current = true;
+      const newId = Date.now().toString();
+      const name = `Residence ${newId}`;
+
+      const newItem = {
+        id: newId, name, sourceImage: base64Image,
+        renderedImage: undefined,
+        timestamp: Date.now()
+      };
+
+      navigate(`visualizer/${newId}`);
+      
+      return true;
+
+    } catch (error) {
+
+    }
   };
 
   return (
