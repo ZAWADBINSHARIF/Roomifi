@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useOutletContext } from "react-router";
 import { CheckCircle2, ImageIcon, UploadIcon } from "lucide-react";
-import { PROGRESS_INCREMENT, PROGRESS_INTERVAL_MS, REDIRECT_DELAY_MS } from '../../lib/constants';
+import { PROGRESS_INCREMENT, REDIRECT_DELAY_MS, PROGRESS_INTERVAL_MS } from "../../lib/constants";
 
 interface UploadProps {
     onComplete?: (base64Data: string) => void;
@@ -63,7 +63,6 @@ const Upload = ({ onComplete }: UploadProps) => {
         };
         reader.readAsDataURL(file);
     }, [isSignedIn, onComplete]);
-
 
     const handleDragOver = (e: React.DragEvent) => {
         e.preventDefault();
