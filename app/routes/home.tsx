@@ -3,9 +3,9 @@ import type { Route } from "./+types/home";
 import { ArrowRight, ArrowUpRight, Clock, Layers } from "lucide-react";
 import Button from "~/components/ui/Button";
 import Upload from "~/components/Upload";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { createProject } from "../../lib/puter.action";
+import { createProject, getProjects } from "../../lib/puter.action";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -56,6 +56,16 @@ export default function Home() {
       isCreatingProjectRef.current = false;
     }
   }
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const items = await getProjects();
+
+      setProjects(items);
+    };
+
+    fetchProjects();
+  }, []);
 
   return (
     <div className="home">
