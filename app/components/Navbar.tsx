@@ -1,10 +1,12 @@
 import { Box } from "lucide-react";
 import Button from "./ui/Button";
-import { useOutletContext } from "react-router";
+import { redirect, useNavigate, useOutletContext } from "react-router";
 
 export const Navbar = () => {
 
     const { isSignedIn, userName, signIn, signOut } = useOutletContext<AuthContext>();
+
+    let navigate = useNavigate();
 
     const handleAuthClick = async () => {
         if (isSignedIn) {
@@ -24,10 +26,14 @@ export const Navbar = () => {
         }
     };
 
+    const goToHome = () => {
+        navigate('/');
+    };
+
     return (
         <header className="navbar">
             <nav className="inner">
-                <div className="left">
+                <div onClick={goToHome} className="left">
                     <div className="brand">
                         <Box className="logo" />
 

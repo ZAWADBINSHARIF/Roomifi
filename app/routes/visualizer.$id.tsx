@@ -151,7 +151,11 @@ const VisualizerId = () => {
 
                     <div className={`render-area ${isProcessing ? 'is-processing' : ''}`}>
                         {currentImage ? (
-                            <img src={currentImage} alt="AI Render" className="render-img" />
+                            <div className="flex justify-center gap-10">
+                                <img src={project?.sourceImage} alt="AI Render" className="render-img w-1/2" />
+
+                                <img src={currentImage} alt="AI Render" className="render-img w-1/2" />
+                            </div>
                         ) : (
                             <div className="render-placeholder">
                                 {project?.sourceImage && (
